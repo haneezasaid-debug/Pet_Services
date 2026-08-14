@@ -1,0 +1,289 @@
+[
+  {
+    "id": "p1",
+    "name": "Sarah Tan",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80",
+    "badge": "Top Rated Walker",
+    "rating": 4.95,
+    "reviewCount": 48,
+    "address": "81 Victoria St, Singapore 188065 (SMU Campus / Bras Basah)",
+    "postalCode": "188065",
+    "lat": 1.2963,
+    "lng": 103.8502,
+    "distanceKm": 0.2,
+    "services": ["walking", "sitting", "transport"],
+    "rates": {
+      "walking": 28,
+      "sitting": 55,
+      "grooming": 0,
+      "transport": 22
+    },
+    "creditsPerService": {
+      "walking": 28,
+      "sitting": 55,
+      "grooming": 0,
+      "transport": 22
+    },
+    "bio": "Certified canine first-responder and veterinary nurse student located right beside SMU. Passionate about high-energy dogs and structured leash walks through Fort Canning Park.",
+    "yearsExperience": 5,
+    "specialties": ["High-energy dogs", "Puppy leash training", "Senior cat sitting", "Medication administration"],
+    "availability": ["08:00 AM", "10:30 AM", "02:00 PM", "04:30 PM", "06:30 PM"],
+    "reviews": [
+      {
+        "author": "Dr. Marcus Wei",
+        "petName": "Buster (Golden Retriever)",
+        "rating": 5,
+        "date": "3 days ago",
+        "comment": "Sarah walked Buster twice a day during my conference at SMU. She provided live GPS routes and photos at Fort Canning. Exceptional care!"
+      },
+      {
+        "author": "Chloe Lim",
+        "petName": "Miso (Shiba Inu)",
+        "rating": 5,
+        "date": "1 week ago",
+        "comment": "Super patient with my stubborn Shiba. Handled his reactivity like an absolute pro."
+      }
+    ]
+  },
+  {
+    "id": "p2",
+    "name": "David Kumar",
+    "avatar": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80",
+    "badge": "Senior Sitter & Groomer",
+    "rating": 4.88,
+    "reviewCount": 36,
+    "address": "200 Victoria St, Singapore 188067 (Bugis Junction)",
+    "postalCode": "188067",
+    "lat": 1.2998,
+    "lng": 103.8553,
+    "distanceKm": 0.5,
+    "services": ["walking", "sitting", "grooming"],
+    "rates": {
+      "walking": 30,
+      "sitting": 60,
+      "grooming": 65,
+      "transport": 0
+    },
+    "creditsPerService": {
+      "walking": 30,
+      "sitting": 60,
+      "grooming": 65,
+      "transport": 0
+    },
+    "bio": "Professional pet groomer & home sitter with 7 years of full-time experience. Specialized in low-stress coat styling, sensitive skin hydrobaths, and overnight sitting.",
+    "yearsExperience": 7,
+    "specialties": ["Hypoallergenic grooming", "De-shedding", "Anxious pets", "Overnight stays"],
+    "availability": ["09:00 AM", "11:30 AM", "01:30 PM", "03:30 PM", "05:30 PM"],
+    "reviews": [
+      {
+        "author": "Seraphina Fong",
+        "petName": "Snowy (Bichon Frise)",
+        "rating": 5,
+        "date": "5 days ago",
+        "comment": "David's grooming made Snowy look like a fluffy cloud! Very calm demeanor with timid dogs."
+      },
+      {
+        "author": "Kenji Sato",
+        "petName": "Koko & Nana (Cats)",
+        "rating": 5,
+        "date": "2 weeks ago",
+        "comment": "Did a 4-day sitting for our cats. Fed them on time, administered eye drops, and left the flat spotless."
+      }
+    ]
+  },
+  {
+    "id": "p3",
+    "name": "Elena Rostova",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80",
+    "badge": "Behavioral Specialist",
+    "rating": 4.98,
+    "reviewCount": 62,
+    "address": "9 Bras Basah Rd, Singapore 189559 (Rendezvous / Bencoolen)",
+    "postalCode": "189559",
+    "lat": 1.2978,
+    "lng": 103.8509,
+    "distanceKm": 0.3,
+    "services": ["walking", "sitting", "grooming", "transport"],
+    "rates": {
+      "walking": 35,
+      "sitting": 70,
+      "grooming": 75,
+      "transport": 25
+    },
+    "creditsPerService": {
+      "walking": 35,
+      "sitting": 70,
+      "grooming": 75,
+      "transport": 25
+    },
+    "bio": "Fear-free certified dog trainer and pet handler based right across from SMU School of Economics. Expert in positive reinforcement walking and reactive canine socialization.",
+    "yearsExperience": 6,
+    "specialties": ["Leash reactivity", "Large breeds (>30kg)", "Puppy socialization", "Pet taxi"],
+    "availability": ["07:30 AM", "10:00 AM", "12:30 PM", "03:00 PM", "05:00 PM", "07:00 PM"],
+    "reviews": [
+      {
+        "author": "Jessica Ang",
+        "petName": "Thor (German Shepherd)",
+        "rating": 5,
+        "date": "Yesterday",
+        "comment": "Thor is usually afraid of city noises around Bras Basah, but Elena kept him totally engaged and calm. Incredible trainer!"
+      }
+    ]
+  },
+  {
+    "id": "p4",
+    "name": "Nurul Huda",
+    "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80",
+    "badge": "Cat & Small Pet Expert",
+    "rating": 4.92,
+    "reviewCount": 29,
+    "address": "68 Orchard Rd, Singapore 238839 (Plaza Singapura / Dhoby Ghaut)",
+    "postalCode": "238839",
+    "lat": 1.3005,
+    "lng": 103.8451,
+    "distanceKm": 0.7,
+    "services": ["sitting", "transport"],
+    "rates": {
+      "walking": 0,
+      "sitting": 48,
+      "grooming": 0,
+      "transport": 20
+    },
+    "creditsPerService": {
+      "walking": 0,
+      "sitting": 48,
+      "grooming": 0,
+      "transport": 20
+    },
+    "bio": "Feline behavioral consultant specializing in shy cats, rabbits, and small animals. Offers quiet drop-in visits, litter sanitization, and stress-free vet clinic transport.",
+    "yearsExperience": 4,
+    "specialties": ["Feline enrichment", "Senior pet comfort", "Rabbits & guinea pigs", "Post-surgery care"],
+    "availability": ["08:30 AM", "11:00 AM", "01:00 PM", "04:00 PM", "06:00 PM"],
+    "reviews": [
+      {
+        "author": "Brendan Teo",
+        "petName": "Luna & Simba (Persian cats)",
+        "rating": 5,
+        "date": "4 days ago",
+        "comment": "Nurul is the cat whisperer! Even my aloof Persian came out to purr and play feather wand."
+      }
+    ]
+  },
+  {
+    "id": "p5",
+    "name": "Lucas Chee",
+    "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80",
+    "badge": "Active Adventure Walker",
+    "rating": 4.86,
+    "reviewCount": 42,
+    "address": "100 Middle Rd, Singapore 188968 (Midland / Rochor)",
+    "postalCode": "188968",
+    "lat": 1.2989,
+    "lng": 103.8541,
+    "distanceKm": 0.6,
+    "services": ["walking", "transport"],
+    "rates": {
+      "walking": 25,
+      "sitting": 0,
+      "grooming": 0,
+      "transport": 20
+    },
+    "creditsPerService": {
+      "walking": 25,
+      "sitting": 0,
+      "grooming": 0,
+      "transport": 20
+    },
+    "bio": "Marathon runner and active pet companion. Conducts energetic pack walks, hill walks up Fort Canning, and waterfront exercise loops around Marina Bay.",
+    "yearsExperience": 4,
+    "specialties": ["Trail jogs", "Pack walks", "High-stamina dogs", "GPS tracking"],
+    "availability": ["07:00 AM", "09:30 AM", "04:00 PM", "06:00 PM"],
+    "reviews": [
+      {
+        "author": "Amanda Koh",
+        "petName": "Rocky (Border Collie)",
+        "rating": 5,
+        "date": "6 days ago",
+        "comment": "Rocky always comes home happily exhausted after walks with Lucas. Great communication and water breaks."
+      }
+    ]
+  },
+  {
+    "id": "p6",
+    "name": "Michelle Goh",
+    "avatar": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80",
+    "badge": "Master Groomer & Stylist",
+    "rating": 4.96,
+    "reviewCount": 51,
+    "address": "111 Somerset Rd, Singapore 238164 (Somerset / Orchard)",
+    "postalCode": "238164",
+    "lat": 1.3009,
+    "lng": 103.8378,
+    "distanceKm": 1.4,
+    "services": ["grooming", "sitting"],
+    "rates": {
+      "walking": 0,
+      "sitting": 65,
+      "grooming": 80,
+      "transport": 0
+    },
+    "creditsPerService": {
+      "walking": 0,
+      "sitting": 65,
+      "grooming": 80,
+      "transport": 0
+    },
+    "bio": "Award-winning creative pet groomer using natural organic Japanese shampoos, paw balm treatments, and gentle scissor work for all coat types.",
+    "yearsExperience": 8,
+    "specialties": ["Asian fusion teddy styling", "Aromatherapy spa", "Flea & tick detox", "Deshedding treatments"],
+    "availability": ["10:00 AM", "01:00 PM", "03:30 PM", "06:00 PM"],
+    "reviews": [
+      {
+        "author": "Vernon Seah",
+        "petName": "Mochi (Poodle Mix)",
+        "rating": 5,
+        "date": "1 week ago",
+        "comment": "The scissor work is pristine and Michelle was so tender with Mochi's sensitive ears."
+      }
+    ]
+  },
+  {
+    "id": "p7",
+    "name": "Jonathan Tay",
+    "avatar": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=300&q=80",
+    "badge": "Reliable Pet Transit & Care",
+    "rating": 4.89,
+    "reviewCount": 33,
+    "address": "25 Stamford Rd, Singapore 178957 (Capitol / City Hall)",
+    "postalCode": "178957",
+    "lat": 1.2936,
+    "lng": 103.8519,
+    "distanceKm": 0.4,
+    "services": ["walking", "sitting", "transport"],
+    "rates": {
+      "walking": 26,
+      "sitting": 52,
+      "grooming": 0,
+      "transport": 24
+    },
+    "creditsPerService": {
+      "walking": 26,
+      "sitting": 52,
+      "grooming": 0,
+      "transport": 24
+    },
+    "bio": "Spacious air-conditioned pet taxi equipped with crash-tested safety crates, dog seatbelts, and ramp access for senior pets. Available for vet trips, airport pickup, and neighborhood walks.",
+    "yearsExperience": 5,
+    "specialties": ["Air-con pet taxi", "Senior pet handling", "Vet appointments", "Drop-in feeding"],
+    "availability": ["08:00 AM", "11:00 AM", "02:00 PM", "05:00 PM", "07:30 PM"],
+    "reviews": [
+      {
+        "author": "Valerie Neo",
+        "petName": "Kopi (Corgi)",
+        "rating": 5,
+        "date": "2 weeks ago",
+        "comment": "Jonathan arrived exactly on time with a clean vehicle and water bowls ready. Super reliable transport service in town."
+      }
+    ]
+  }
+]

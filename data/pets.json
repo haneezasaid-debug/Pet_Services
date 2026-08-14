@@ -1,0 +1,38 @@
+[
+  {
+    "id": "pet_1",
+    "name": "Mochi",
+    "species": "Dog",
+    "breed": "Pembroke Welsh Corgi",
+    "size": "Medium (12 kg)",
+    "age": 3,
+    "photo": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=400&q=80",
+    "specialNeeds": "Loves ball fetching. Can get nervous around loud buses at Bras Basah junction; prefers shady grass paths near SMU Li Ka Shing library and Fort Canning. Daily joint supplement in evening meal.",
+    "emergencyContact": "+65 9123 4567 (Haneeza Said)",
+    "vetName": "The Animal Clinic @ Katong (+65 6440 4767)"
+  },
+  {
+    "id": "pet_2",
+    "name": "Luna",
+    "species": "Cat",
+    "breed": "Ragdoll",
+    "size": "Small (4.5 kg)",
+    "age": 2,
+    "photo": "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=400&q=80",
+    "specialNeeds": "Indoor-only cat. Needs daily gentle combing to prevent hairballs. Enjoys feather teaser toy before breakfast. Sensitive to citrus scents.",
+    "emergencyContact": "+65 9123 4567 (Haneeza Said)",
+    "vetName": "Mount Pleasant Vet Centre (Orchard)"
+  },
+  {
+    "id": "pet_3",
+    "name": "Bailey",
+    "species": "Dog",
+    "breed": "Golden Retriever",
+    "size": "Large (28 kg)",
+    "age": 6,
+    "photo": "https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=400&q=80",
+    "specialNeeds": "Gentle swimmer. Slight hip sensitivity on humid afternoons; please ensure plenty of cold water and rest stops under shady trees.",
+    "emergencyContact": "+65 9876 5432 (Chloe Lim)",
+    "vetName": "SMU Neighborhood Vet Care"
+  }
+]

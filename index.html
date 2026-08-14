@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PawPals SMU - Pet Care, Walks & AI Care Concierge</title>
+  <meta name="description" content="Verified dog walkers, pet sitters, and groomers around Singapore Management University with Gemini AI recommendations and discounted credit packages.">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+
+  <!-- App Header & Navigation Bar -->
+  <header class="app-header" role="banner">
+    <div class="header-container">
+      <a href="#providers" class="logo-brand" id="brand-logo-link" aria-label="PawPals SMU Home">
+        <span class="brand-icon" aria-hidden="true">🐾</span>
+        <div>
+          <span class="brand-title">PawPals SMU</span>
+          <span class="brand-subtitle">Singapore Central Pet Services</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <!-- Credit Wallet Balance Indicator Button -->
+        <button type="button" class="credit-badge-button" id="header-wallet-btn" aria-label="View Credit Balance and Top-up Packages">
+          <span class="credit-icon" aria-hidden="true">💎</span>
+          <span id="header-credits-display">150 Credits</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" role="navigation" aria-label="Main Application Navigation">
+      <button type="button" class="nav-tab-button active" id="tab-btn-providers" data-tab="tab-providers">
+        <span aria-hidden="true">📍</span> Walkers & Map
+      </button>
+      <button type="button" class="nav-tab-button" id="tab-btn-booking" data-tab="tab-booking">
+        <span aria-hidden="true">📅</span> Book Service
+      </button>
+      <button type="button" class="nav-tab-button" id="tab-btn-pets" data-tab="tab-pets">
+        <span aria-hidden="true">🐕</span> My Pets
+      </button>
+      <button type="button" class="nav-tab-button" id="tab-btn-credits" data-tab="tab-credits">
+        <span aria-hidden="true">💳</span> Credit Packages
+      </button>
+      <button type="button" class="nav-tab-button" id="tab-btn-ai" data-tab="tab-ai">
+        <span aria-hidden="true">✨</span> AI Care Concierge
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Application Content Area -->
+  <main class="main-wrapper" id="main-content" role="main">
+
+    <!-- Singapore Management University Context Banner -->
+    <aside class="smu-banner" role="complementary" aria-label="Location notice">
+      <div class="smu-banner-title">
+        <span aria-hidden="true">🇸🇬</span>
+        <span>Serving Singapore Management University (SMU) & Downtown Central</span>
+      </div>
+      <p class="smu-banner-text">
+        All sitters & walkers are located within 1.5 km of SMU Bras Basah Campus (Bras Basah, Bugis, Bencoolen, Dhoby Ghaut, City Hall).
+      </p>
+    </aside>
+
+    <!-- TAB 1: Sitter / Walker Directory & Map -->
+    <section class="tab-pane active" id="tab-providers" role="tabpanel" aria-labelledby="tab-btn-providers">
+      
+      <!-- Integrated AI Quick Recommender Bar -->
+      <section class="ai-panel-card" aria-label="AI Recommendation Assistant">
+        <div class="ai-panel-header">
+          <div class="ai-title-wrap">
+            <span class="ai-badge">Gemini 3.7 Flash</span>
+            <h2 class="ai-title">AI Pet Care Concierge</h2>
+          </div>
+          <span class="smu-banner-text">Instant smart matching for your pet's needs</span>
+        </div>
+        <div class="ai-panel-body">
+          <div class="ai-action-pills" role="toolbar" aria-label="AI Quick Actions">
+            <button type="button" class="ai-chip-btn" id="ai-quick-recommend-btn">
+              <span aria-hidden="true">🐕</span> Match Best Walker for My Pet
+            </button>
+            <button type="button" class="ai-chip-btn" id="ai-quick-itinerary-btn">
+              <span aria-hidden="true">🗺️</span> Suggest SMU Park Walk Route
+            </button>
+            <button type="button" class="ai-chip-btn" id="ai-quick-care-summary-btn">
+              <span aria-hidden="true">📋</span> Summarize Care Instructions
+            </button>
+          </div>
+
+          <form class="ai-custom-prompt-form" id="ai-prompt-form">
+            <label for="ai-custom-input" class="sr-only">Ask Gemini AI a question about pet care or walker matching</label>
+            <input type="text" id="ai-custom-input" class="ai-input" placeholder="Ask AI: e.g., 'Who is best for high-energy dogs near Bras Basah?'">
+            <button type="submit" class="btn-primary" id="ai-submit-btn">
+              <span aria-hidden="true">✨</span> Ask AI
+            </button>
+          </form>
+
+          <!-- AI Response Feedback Area -->
+          <div class="ai-response-box" id="ai-response-container" aria-live="polite">
+            <div class="ai-loading-state" id="ai-loading-indicator">
+              <div class="spinner" aria-hidden="true"></div>
+              <span>Consulting Gemini AI care intelligence...</span>
+            </div>
+            <div class="ai-result-content" id="ai-result-text"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Directory Filter Bar -->
+      <div class="directory-layout">
+        <form class="filter-bar" id="provider-filter-form" role="search" aria-label="Filter pet care providers">
+          <div class="filter-group">
+            <span class="filter-label" id="service-filter-label">Filter by Service Type</span>
+            <div class="service-filter-chips" role="group" aria-labelledby="service-filter-label">
+              <button type="button" class="service-chip active" data-service="all">All Services</button>
+              <button type="button" class="service-chip" data-service="walking">Dog Walking</button>
+              <button type="button" class="service-chip" data-service="sitting">Pet Sitting</button>
+              <button type="button" class="service-chip" data-service="grooming">Grooming</button>
+              <button type="button" class="service-chip" data-service="transport">Pet Transport</button>
+            </div>
+          </div>
+
+          <div class="filter-inputs-row">
+            <div class="filter-group">
+              <label for="filter-price-select" class="filter-label">Max Rate (SGD)</label>
+              <select id="filter-price-select" class="select-control">
+                <option value="all">Any Price</option>
+                <option value="30">Under $30 / session</option>
+                <option value="50">Under $50 / session</option>
+                <option value="75">Under $75 / session</option>
+              </select>
+            </div>
+
+            <div class="filter-group filter-search-group">
+              <div class="filter-search-header">
+                <label for="filter-search-input" class="filter-label">Search Name, Address, or Postal Code</label>
+                <span class="radius-filter-badge" id="radius-filter-badge" style="display:none;">
+                  <span aria-hidden="true">📍</span> 1.5 km Radius Active
+                </span>
+              </div>
+              <div class="search-input-wrapper">
+                <input type="text" id="filter-search-input" class="input-control" placeholder="e.g. 188065, Bras Basah, Bugis, Sarah, Orchard">
+                <button type="submit" id="filter-search-submit-btn" class="search-submit-btn" aria-label="Search and Geocode on Map">
+                  <span aria-hidden="true">🔍</span> Search
+                </button>
+                <button type="button" id="filter-search-clear-btn" class="search-clear-btn" aria-label="Clear Search and Reset Map" style="display:none;" title="Reset search to all SMU providers">
+                  <span aria-hidden="true">✕</span>
+                </button>
+              </div>
+              <div id="search-geocode-error" class="search-inline-error" role="alert" style="display:none;"></div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Split View: Provider Cards and Google Maps Widget -->
+        <div class="provider-content-split">
+          
+          <!-- Providers Listing Cards -->
+          <div class="providers-grid" id="providers-list-container" role="region" aria-label="List of available pet care providers">
+            <!-- Rendered dynamically by app.js -->
+          </div>
+
+          <!-- Google Maps Widget Container -->
+          <aside class="map-widget-container" id="map-widget-section" aria-label="Interactive Map of Providers near SMU">
+            <div class="map-header">
+              <div class="map-header-left">
+                <h3 class="map-title">
+                  <span aria-hidden="true">📍</span> <span id="map-mode-title">Interactive SMU Care Map</span>
+                </h3>
+                <span class="map-status-pill" id="map-status-pill">Interactive Live Map</span>
+              </div>
+              <span class="map-active-target" id="map-target-label">SMU Campus, 188065</span>
+            </div>
+
+            <!-- Map Controls Toolbar -->
+            <div class="map-controls-toolbar" id="map-controls-toolbar">
+              <button type="button" class="map-ctrl-btn" id="map-btn-fit-all" title="View all verified providers on map">
+                <span aria-hidden="true">🗺️</span> All Providers (<span id="map-provider-count">7</span>)
+              </button>
+              <button type="button" class="map-ctrl-btn" id="map-btn-center-smu" title="Center on Singapore Management University">
+                <span aria-hidden="true">🎓</span> SMU Hub
+              </button>
+              <button type="button" class="map-ctrl-btn" id="map-btn-toggle-route" title="Toggle dog walking park loop">
+                <span aria-hidden="true">🐾</span> Park Loop
+              </button>
+            </div>
+
+            <div class="map-frame-wrapper" id="map-wrapper">
+              <!-- Interactive Google Maps JavaScript API Canvas -->
+              <div id="google-map-canvas" class="google-map-canvas" aria-label="Interactive Google Map with clickable markers for SMU pet sitters and walkers"></div>
+            </div>
+
+            <div class="map-footer-hint" id="map-footer-hint">
+              <span>💡 Tip: Click any marker to view provider rates, reviews & instant booking</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: Service Booking Flow -->
+    <section class="tab-pane" id="tab-booking" role="tabpanel" aria-labelledby="tab-btn-booking">
+      <div class="booking-container">
+        
+        <!-- Booking Form Workflow -->
+        <form class="booking-card" id="service-booking-form" novalidate>
+          <h2 class="section-title">
+            <span aria-hidden="true">🐾</span> Book a Pet Service
+          </h2>
+
+          <!-- Step 1: Select Service Type -->
+          <div class="form-step">
+            <div class="step-header">
+              <span aria-hidden="true">1.</span> Select Service Type
+            </div>
+            <div class="service-type-grid" role="radiogroup" aria-label="Service Type Selection">
+              <div class="service-option-card selected" data-type="walking" role="radio" aria-checked="true" tabindex="0">
+                <div class="service-icon" aria-hidden="true">🦮</div>
+                <div class="service-title">Dog Walking</div>
+                <div class="service-desc">Leash exercise & park walks</div>
+              </div>
+              <div class="service-option-card" data-type="sitting" role="radio" aria-checked="false" tabindex="0">
+                <div class="service-icon" aria-hidden="true">🏠</div>
+                <div class="service-title">Pet Sitting</div>
+                <div class="service-desc">Drop-in visits & feeding</div>
+              </div>
+              <div class="service-option-card" data-type="grooming" role="radio" aria-checked="false" tabindex="0">
+                <div class="service-icon" aria-hidden="true">✂️</div>
+                <div class="service-title">Pet Grooming</div>
+                <div class="service-desc">Bath, styling & hygiene</div>
+              </div>
+              <div class="service-option-card" data-type="transport" role="radio" aria-checked="false" tabindex="0">
+                <div class="service-icon" aria-hidden="true">🚗</div>
+                <div class="service-title">Pet Taxi</div>
+                <div class="service-desc">Vet clinic & transit trips</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Select Provider -->
+          <div class="form-step">
+            <div class="step-header">
+              <span aria-hidden="true">2.</span> Choose Preferred Provider
+            </div>
+            <label for="booking-provider-select" class="sr-only">Choose Provider</label>
+            <select id="booking-provider-select" class="select-control">
+              <!-- Rendered dynamically -->
+            </select>
+          </div>
+
+          <!-- Step 3: Select Pet -->
+          <div class="form-step">
+            <div class="step-header">
+              <span aria-hidden="true">3.</span> Select Your Pet
+            </div>
+            <label for="booking-pet-select" class="sr-only">Select Pet</label>
+            <select id="booking-pet-select" class="select-control">
+              <!-- Rendered dynamically -->
+            </select>
+          </div>
+
+          <!-- Step 4: Booking Calendar & Availability Picker -->
+          <div class="form-step">
+            <div class="step-header">
+              <span aria-hidden="true">4.</span> Date & Available Time Slot
+            </div>
+            <div class="filter-inputs-row">
+              <div>
+                <label for="booking-date-input" class="filter-label">Select Date</label>
+                <input type="date" id="booking-date-input" class="input-control">
+              </div>
+              <div>
+                <label for="booking-duration-select" class="filter-label">Duration</label>
+                <select id="booking-duration-select" class="select-control">
+                  <option value="30">30 Minutes</option>
+                  <option value="60" selected>60 Minutes (Standard)</option>
+                  <option value="90">90 Minutes (+50%)</option>
+                  <option value="120">120 Minutes (+100%)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="filter-group" style="margin-top: 12px;">
+              <span class="filter-label">Available Time Slots (Double-booking protected)</span>
+              <div class="slots-grid" id="booking-slots-container" role="radiogroup" aria-label="Available Time Slots">
+                <!-- Rendered dynamically based on selected provider and date -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: Service Add-ons -->
+          <div class="form-step">
+            <div class="step-header">
+              <span aria-hidden="true">5.</span> Optional Care Add-ons
+            </div>
+            <div class="addons-list">
+              <div class="addon-item">
+                <label class="addon-label-group" for="addon-medication">
+                  <input type="checkbox" id="addon-medication" class="addon-checkbox" data-price="5" data-credits="5">
+                  <span>Oral Medication / Supplement Administration</span>
+                </label>
+                <span class="addon-price">+$5 (5 cr)</span>
+              </div>
+              <div class="addon-item">
+                <label class="addon-label-group" for="addon-pawbalm">
+                  <input type="checkbox" id="addon-pawbalm" class="addon-checkbox" data-price="8" data-credits="8">
+                  <span>Paw Balm & Tropical Heat Soothing Treatment</span>
+                </label>
+                <span class="addon-price">+$8 (8 cr)</span>
+              </div>
+              <div class="addon-item">
+                <label class="addon-label-group" for="addon-gpstrack">
+                  <input type="checkbox" id="addon-gpstrack" class="addon-checkbox" data-price="4" data-credits="4" checked>
+                  <span>Real-time GPS Live Walk Route & Photo Updates</span>
+                </label>
+                <span class="addon-price">+$4 (4 cr)</span>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Price Summary & Checkout Panel -->
+        <aside class="checkout-summary-card" aria-label="Booking Price Summary and Checkout">
+          <h3 class="section-title">
+            <span aria-hidden="true">🧾</span> Price Summary
+          </h3>
+
+          <div class="checkout-row">
+            <span>Base Service Rate</span>
+            <span id="summary-base-price">$28.00 SGD</span>
+          </div>
+
+          <div class="checkout-row">
+            <span>Duration Multiplier</span>
+            <span id="summary-duration-text">60 mins (1.0x)</span>
+          </div>
+
+          <div class="checkout-row">
+            <span>Care Add-ons</span>
+            <span id="summary-addons-price">$4.00 SGD</span>
+          </div>
+
+          <div class="checkout-row">
+            <span>Platform Service Fee</span>
+            <span id="summary-service-fee">$0.00 (Waived for Members)</span>
+          </div>
+
+          <div class="checkout-row total">
+            <span>Total Payable</span>
+            <span id="summary-total-price">$32.00 SGD</span>
+          </div>
+
+          <div class="checkout-row" style="color: var(--md-sys-color-primary); font-weight: 700;">
+            <span>Or Redeem with Credits:</span>
+            <span id="summary-credits-price">32 Credits</span>
+          </div>
+
+          <!-- Payment Method Toggle -->
+          <div class="filter-group">
+            <span class="filter-label">Select Payment Mode</span>
+            <div class="payment-toggle-group" role="group" aria-label="Payment Mode">
+              <button type="button" class="pay-toggle-btn active" id="pay-mode-credits-btn" data-mode="credits">
+                💎 Pay with Credits
+              </button>
+              <button type="button" class="pay-toggle-btn" id="pay-mode-card-btn" data-mode="card">
+                💳 Credit Card / Cash
+              </button>
+            </div>
+          </div>
+
+          <!-- Credit Balance Status for Current User -->
+          <div class="pet-notes-box" id="checkout-wallet-status-box">
+            <strong>Your Credit Balance:</strong> <span id="checkout-balance-display">150 credits</span><br>
+            <span id="checkout-balance-after-text">Balance after booking: 118 credits</span>
+          </div>
+
+          <button type="button" class="btn-primary" id="confirm-booking-btn" style="width: 100%; font-size: 1rem;">
+            Confirm & Reserve Slot
+          </button>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: Pet Profile Management -->
+    <section class="tab-pane" id="tab-pets" role="tabpanel" aria-labelledby="tab-btn-pets">
+      <div class="pets-header-bar">
+        <div>
+          <h2 class="section-title" style="margin-bottom: 0;">
+            <span aria-hidden="true">🐕</span> Pet Profiles
+          </h2>
+          <p class="smu-banner-text" style="color: var(--md-sys-color-outline);">
+            Manage your pet's dietary notes, temperament, and health records for sitters.
+          </p>
+        </div>
+        <button type="button" class="btn-primary" id="add-pet-modal-open-btn">
+          <span aria-hidden="true">➕</span> Add New Pet
+        </button>
+      </div>
+
+      <div class="pets-grid" id="pets-list-container" role="region" aria-label="Pet Profiles List">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- TAB 4: Credit Package System -->
+    <section class="tab-pane" id="tab-credits" role="tabpanel" aria-labelledby="tab-btn-credits">
+      <div class="credit-hero-card">
+        <div>
+          <span style="text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.08em; opacity: 0.9;">Member Credit Balance</span>
+          <div class="credit-balance-big">
+            <span aria-hidden="true">💎</span>
+            <span id="hero-credits-amount">150</span>
+            <span style="font-size: 1.125rem; font-weight: 500;">Credits</span>
+          </div>
+        </div>
+        <p style="font-size: 0.9375rem; opacity: 0.95;">
+          Save up to 36% with tiered credit bundles. Credits never expire and can be redeemed seamlessly across all verified walkers, groomers, and sitters.
+        </p>
+      </div>
+
+      <h3 class="section-title">
+        <span aria-hidden="true">📦</span> Tiered Credit Bundles
+      </h3>
+
+      <div class="bundles-grid" id="credit-bundles-container" role="region" aria-label="Available Credit Bundles">
+        <!-- Rendered dynamically from server/local data -->
+      </div>
+
+      <h3 class="section-title">
+        <span aria-hidden="true">📜</span> Credit Ledger & Redemption History
+      </h3>
+
+      <div class="history-table-container">
+        <table class="history-table" aria-label="Credit Transactions History">
+          <thead>
+            <tr>
+              <th scope="col">Date / Time</th>
+              <th scope="col">Transaction Details</th>
+              <th scope="col">Type</th>
+              <th scope="col">Credits</th>
+              <th scope="col">Amount</th>
+            </tr>
+          </thead>
+          <tbody id="credit-history-tbody">
+            <!-- Rendered dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB 5: AI Care Concierge Full Desk -->
+    <section class="tab-pane" id="tab-ai" role="tabpanel" aria-labelledby="tab-btn-ai">
+      <div class="booking-card">
+        <h2 class="section-title">
+          <span aria-hidden="true">✨</span> Gemini AI Pet Care & Route Concierge
+        </h2>
+        <p class="smu-banner-text" style="color: var(--md-sys-color-outline); margin-bottom: 20px;">
+          Powered by Gemini 3.7 Flash server-side. Ask complex veterinary lifestyle questions, request heat-safe walk routes around Singapore Management University, or generate personalized pet sitting briefings.
+        </p>
+
+        <div class="ai-action-pills" role="toolbar" style="margin-bottom: 16px;">
+          <button type="button" class="ai-chip-btn" id="ai-desk-walker-match">
+            🐕 Walker Matchmaker
+          </button>
+          <button type="button" class="ai-chip-btn" id="ai-desk-care-summary">
+            📋 Care Notes Summary
+          </button>
+          <button type="button" class="ai-chip-btn" id="ai-desk-smu-route">
+            🌳 Fort Canning / SMU Walk Itinerary
+          </button>
+          <button type="button" class="ai-chip-btn" id="ai-desk-safety-check">
+            ☀️ Tropical Heat Safety Checklist
+          </button>
+        </div>
+
+        <form class="ai-custom-prompt-form" id="ai-desk-form" style="margin-bottom: 20px;">
+          <label for="ai-desk-input" class="sr-only">Ask Gemini AI</label>
+          <input type="text" id="ai-desk-input" class="ai-input" placeholder="Type your custom pet care query or instruction here...">
+          <button type="submit" class="btn-primary">
+            <span>✨ Run AI Analysis</span>
+          </button>
+        </form>
+
+        <div class="ai-response-box visible" id="ai-desk-output-box">
+          <div class="ai-result-content" id="ai-desk-output-content">
+            <h4 class="ai-result-title">PawPals AI Intelligence Ready</h4>
+            <p class="ai-result-summary">
+              Select one of the prompt chips above or type a custom question to query the serverless Gemini AI agent.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL 1: Reviews & Ratings Modal -->
+  <div class="modal-backdrop" id="modal-reviews" role="dialog" aria-modal="true" aria-labelledby="reviews-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="reviews-modal-title">Provider Reviews</h3>
+        <button type="button" class="btn-close" id="reviews-modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="reviews-list-container">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Add Review Form -->
+        <form id="add-review-form" style="border-top: 1px solid var(--md-sys-color-outline-variant); padding-top: 16px; margin-top: 8px;">
+          <h4 style="font-weight: 700; margin-bottom: 8px;">Leave a Verified Review</h4>
+          <input type="hidden" id="review-provider-id">
+          <div class="filter-inputs-row" style="margin-bottom: 8px;">
+            <input type="text" id="review-author-input" class="input-control" placeholder="Your Name" required>
+            <input type="text" id="review-pet-input" class="input-control" placeholder="Pet Name (e.g. Mochi)" required>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <label for="review-rating-select" class="filter-label">Rating</label>
+            <select id="review-rating-select" class="select-control">
+              <option value="5">★★★★★ (5/5 Exceptional)</option>
+              <option value="4">★★★★☆ (4/5 Great)</option>
+              <option value="3">★★★☆☆ (3/5 Good)</option>
+            </select>
+          </div>
+          <div style="margin-bottom: 8px;">
+            <textarea id="review-comment-input" class="input-control" placeholder="Write your experience..." rows="3" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%;">Submit Review</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Add/Edit Pet Profile Modal -->
+  <div class="modal-backdrop" id="modal-pet-form" role="dialog" aria-modal="true" aria-labelledby="pet-form-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="pet-form-modal-title">Add / Edit Pet Profile</h3>
+        <button type="button" class="btn-close" id="pet-modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <form id="pet-profile-editor-form">
+        <div class="modal-body">
+          <input type="hidden" id="pet-edit-id">
+          <div>
+            <label for="pet-name-input" class="filter-label">Pet Name *</label>
+            <input type="text" id="pet-name-input" class="input-control" placeholder="e.g. Kopi" required>
+          </div>
+          <div class="filter-inputs-row">
+            <div>
+              <label for="pet-species-select" class="filter-label">Species *</label>
+              <select id="pet-species-select" class="select-control">
+                <option value="Dog">Dog</option>
+                <option value="Cat">Cat</option>
+                <option value="Rabbit">Rabbit</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="pet-breed-input" class="filter-label">Breed *</label>
+              <input type="text" id="pet-breed-input" class="input-control" placeholder="e.g. Shiba Inu" required>
+            </div>
+          </div>
+          <div class="filter-inputs-row">
+            <div>
+              <label for="pet-size-select" class="filter-label">Size</label>
+              <select id="pet-size-select" class="select-control">
+                <option value="Small (< 10 kg)">Small (&lt; 10 kg)</option>
+                <option value="Medium (10 - 25 kg)">Medium (10 - 25 kg)</option>
+                <option value="Large (25 - 40 kg)">Large (25 - 40 kg)</option>
+                <option value="Giant (> 40 kg)">Giant (&gt; 40 kg)</option>
+              </select>
+            </div>
+            <div>
+              <label for="pet-age-input" class="filter-label">Age (Years)</label>
+              <input type="number" id="pet-age-input" class="input-control" min="0" max="25" value="3" required>
+            </div>
+          </div>
+          <div>
+            <label for="pet-needs-input" class="filter-label">Special Needs / Care Notes / Medications</label>
+            <textarea id="pet-needs-input" class="input-control" rows="3" placeholder="e.g. Needs shade, gentle on front paws, loves chicken treats"></textarea>
+          </div>
+          <div>
+            <label for="pet-emergency-input" class="filter-label">Emergency Contact</label>
+            <input type="text" id="pet-emergency-input" class="input-control" value="+65 9123 4567">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="pet-modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn-primary">Save Pet Profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Purchase Credit Bundle Modal -->
+  <div class="modal-backdrop" id="modal-purchase-credits" role="dialog" aria-modal="true" aria-labelledby="purchase-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="purchase-modal-title">Top Up Credits</h3>
+        <button type="button" class="btn-close" id="purchase-modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="purchase-bundle-details-box" class="pet-notes-box">
+          <!-- Populated dynamically -->
+        </div>
+        <p style="font-size: 0.875rem; color: var(--md-sys-color-outline);">
+          Credits are instantly credited to your wallet balance and never expire.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" id="purchase-modal-cancel-btn">Cancel</button>
+        <button type="button" class="btn-primary" id="confirm-purchase-btn">Confirm Purchase</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4: Booking Confirmation Success Receipt -->
+  <div class="modal-backdrop" id="modal-booking-success" role="dialog" aria-modal="true" aria-labelledby="success-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="success-modal-title">🎉 Booking Confirmed!</h3>
+        <button type="button" class="btn-close" id="success-modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body" id="booking-receipt-content">
+        <!-- Rendered dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary" id="success-modal-done-btn">View in Bookings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container" aria-live="assertive"></div>
+
+</body>
+</html>

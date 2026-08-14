@@ -1,0 +1,6 @@
+{
+  "name": "Master Prompt",
+  "description": "Master prompt and specifications for the pet service booking and AI insight web application.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
